@@ -25,14 +25,14 @@ const toNavigate = (path: string) => {
 </script>
 
 <template>
-    <div class="navigate">
+    <div class="container">
         <el-row>
             <el-col :span="8" v-for="item in navigate" @click="toNavigate(item.path)">
-                <div class="navigate_icon">
+                <div class="container_icon">
                     <el-icon>
                         <component :is="item.icon"></component>
                     </el-icon>
-                    <div class="navigate_icon_text">{{ item.title }}</div>
+                    <div class="container_icon_text">{{ item.title }}</div>
                 </div>
             </el-col>
         </el-row>
@@ -40,7 +40,7 @@ const toNavigate = (path: string) => {
 </template>
 
 <style lang='scss' scoped>
-.navigate {
+.container {
     height: 50px;
     background-color: greenyellow;
     text-align: center;

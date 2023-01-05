@@ -8,9 +8,15 @@ import navigate from '@/components/navigate/index.vue'
 
 <template>
     <div class="homePage_container">
-        <headerTitle class="header"></headerTitle>
-        <RouterView></RouterView>
-        <navigate class="navigate"></navigate>
+        <div class="homePage_container_header">
+            <headerTitle></headerTitle>
+        </div>
+        <div class="homePage_container_routerView">
+            <RouterView></RouterView>
+        </div>
+        <div class="homePage_container_navigate">
+            <navigate></navigate>
+        </div>
     </div>
 </template>
 
@@ -18,9 +24,21 @@ import navigate from '@/components/navigate/index.vue'
 .homePage_container {
     height: 100%;
 
-    .navigate {
-        position: absolute;
-        top: calc(100% - 50px);
+    &_header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1;
+    }
+
+    &_routerView {
+        margin-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    &_navigate {
+        position: fixed;
         left: 0;
         right: 0;
         bottom: 0;

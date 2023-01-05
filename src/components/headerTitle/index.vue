@@ -9,6 +9,7 @@ const data = reactive({
 const router = useRouter()
 watch(() => router.currentRoute.value.path, newVal => {
     switch (newVal) {
+        // 导航栏
         case '/home':
             data.title = '首页'
             break;
@@ -18,8 +19,38 @@ watch(() => router.currentRoute.value.path, newVal => {
         case '/userCenter':
             data.title = '个人中心'
             break;
+        // 搜索页
         case '/search':
             data.title = '商品列表'
+            break;
+        // 推荐栏
+        case '/home/allShop':
+            data.title = '所有商品'
+            break;
+        case '/home/newShop':
+            data.title = '最新商品'
+            break;
+        case '/home/hotShop':
+            data.title = '热门商品'
+            break;
+        case '/home/freeShop':
+            data.title = '免费商品'
+            break;
+        // 个人中心
+        case '/userCenter/getGoods':
+            data.title = '已买到'
+            break;
+        case '/userCenter/sellGoods':
+            data.title = '已卖出'
+            break;
+        case '/userCenter/pubGoods':
+            data.title = '已发布'
+            break;
+        case '/userCenter/collectGoods':
+            data.title = '我的收藏'
+            break;
+        case '/userCenter/userInfo':
+            data.title = '用户详情'
             break;
         default:
             data.title = 'helloworld'
@@ -29,9 +60,7 @@ watch(() => router.currentRoute.value.path, newVal => {
 })
 
 const back = () => {
-    router.replace({
-        path: '/home'
-    })
+    router.back()
 }
 
 
@@ -39,7 +68,11 @@ const back = () => {
 
 <template>
     <div class="title">
-        <span class="title_icon" @click="back" v-show="router.currentRoute.value.path === '/search' ">
+        <span class="title_icon" @click="back" v-show="
+        router.currentRoute.value.path !== '/home'
+        &&router.currentRoute.value.path !== '/pubGoods'
+        &&router.currentRoute.value.path !== '/userCenter'
+        ">
             <el-icon>
                 <ArrowLeftBold />
             </el-icon>
