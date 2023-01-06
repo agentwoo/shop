@@ -5,11 +5,18 @@ const routes: Array<RouteRecordRaw> = [
         name: "test",
         component: () => import("@/views/test.vue"),
     },
-    // {
-    //     path: "/login",
-    //     name: "login",
-    //     component: () => import(""),
-    // },
+    {
+        path: "/login",
+        name: "login",
+        component: () => import("@/views/login/index.vue"),
+    },
+    // 商品详情
+    {
+        path: "/goodsDesc/:id",
+        name: "goodsDesc",
+        component: () => import("@/views/goodsDesc/index.vue"),
+    },
+    // 导航栏
     {
         path: "/",
         name: "homePage",
@@ -32,11 +39,13 @@ const routes: Array<RouteRecordRaw> = [
             }
         ]
     },
+    // 首页
     {
         path: "/search",
         name: "search",
         component: () => import("@/views/home/search/index.vue"),
     },
+    // 推荐选项卡
     {
         path: "/home/allShop",
         name: "allShop",

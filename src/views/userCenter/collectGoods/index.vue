@@ -7,7 +7,9 @@ import headerTitle from '@/components/headerTitle/index.vue'
 
 <template>
     <headerTitle></headerTitle>
-    <div>我的收藏</div>
+    <div>
+        我的收藏
+    </div>
 </template>
 
 <style lang='scss' scoped>

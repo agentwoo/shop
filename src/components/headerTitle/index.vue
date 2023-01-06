@@ -52,8 +52,12 @@ watch(() => router.currentRoute.value.path, newVal => {
         case '/userCenter/userInfo':
             data.title = '用户详情'
             break;
+        // 登录注册
+        case '/login':
+            data.title = '登录/注册'
+            break;
         default:
-            data.title = 'helloworld'
+            data.title = '商品详情'
     }
 }, {
     immediate: true

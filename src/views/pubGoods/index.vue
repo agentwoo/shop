@@ -4,6 +4,10 @@ import { reactive, toRefs, ref } from 'vue'
 import type { FormInstance, FormRules, UploadProps, UploadUserFile } from 'element-plus'
 
 
+interface IpicList {
+    name: string;
+    url: string
+}
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive({
     name: 'Hello',
@@ -11,7 +15,8 @@ const ruleForm = reactive({
     desc: '',
     presentPrice: '',
     originPrice: '',
-    picList: [],
+    contactInfo: '',
+    picList: [] as IpicList[],
 })
 const rules = reactive<FormRules>({
     name: [
@@ -54,16 +59,16 @@ const resetForm = (formEl: FormInstance | undefined) => {
 
 
 
-const fileList = ref<UploadUserFile[]>([
-    {
-        name: 'food.jpeg',
-        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-    },
-    {
-        name: 'food.jpeg',
-        url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-    },
-])
+// ruleForm.picList = ref<UploadUserFile[]>([
+//     {
+//         name: 'food.jpeg',
+//         url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+//     },
+//     {
+//         name: 'food.jpeg',
+//         url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
+//     },
+// ])
 
 const dialogImageUrl = ref('')
 const dialogVisible = ref(false)
@@ -93,6 +98,9 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
             </el-form-item>
             <el-form-item label="原价" prop="originPrice">
                 <el-input v-model="ruleForm.originPrice" />
+            </el-form-item>
+            <el-form-item label="联系方式" prop="contactInfo">
+                <el-input v-model="ruleForm.contactInfo" />
             </el-form-item>
             <el-form-item label="分类" prop="region">
                 <el-select v-model="ruleForm.region" placeholder="其它">
