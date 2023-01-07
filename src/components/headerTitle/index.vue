@@ -47,7 +47,7 @@ watch(() => router.currentRoute.value.path, newVal => {
             data.title = '已发布'
             break;
         case '/userCenter/collectGoods':
-            data.title = '我的收藏'
+            data.title = '收藏列表'
             break;
         case '/userCenter/userInfo':
             data.title = '用户详情'
@@ -91,7 +91,8 @@ const back = () => {
     line-height: 50px;
     font-size: 20px;
     text-align: center;
-    background-color: greenyellow;
+    background-color: #348CCC;
+    color: white;
 
     &_icon {
         position: absolute;

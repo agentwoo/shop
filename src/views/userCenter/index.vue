@@ -1,27 +1,27 @@
 <!-- 用户中心 -->
 <script lang='ts' setup>
 import { reactive, toRefs, ref, computed } from 'vue'
-import imgUrl from '@/assets/category/pig.jpeg'
 import { useRouter } from 'vue-router';
+import imgUrl from '@/assets/category/pig.jpeg'
 
 const router = useRouter()
 
 const menus = computed(() => {
     return [
         {
-            path: '/userCenter/userInfo', icon: 'Sunny', title: '个人中心',
+            path: '/userCenter/userInfo', icon: 'User', title: '个人中心',
         },
         {
-            path: '/userCenter/getGoods', icon: 'Sunny', title: '已买到',
+            path: '/userCenter/getGoods', icon: 'ShoppingBag', title: '我的订单',
         },
         {
-            path: '/userCenter/sellGoods', icon: 'Sunny', title: '已卖出',
+            path: '/userCenter/sellGoods', icon: 'Sell', title: '已卖出',
         },
         {
-            path: '/userCenter/pubGoods', icon: 'Sunny', title: '我发布的',
+            path: '/userCenter/pubGoods', icon: 'Memo', title: '我的发布',
         },
         {
-            path: '/userCenter/collectGoods', icon: 'Sunny', title: '收藏商品',
+            path: '/userCenter/collectGoods', icon: 'Star', title: '我的收藏',
         },
     ]
 })
@@ -42,22 +42,20 @@ const toLoginOrRegister = () => {
                 <span class="container_header_span">登录/注册</span>
             </div>
         </div>
-        <div>
-            <el-menu active-text-color="blue" background-color="white" class="container_menus"
-                :default-active="router.currentRoute.value.path" text-color="black" router>
-                <el-menu-item :index="item.path" v-for="item in menus" class="container_menus_item">
+        <el-menu active-text-color="blue" background-color="white" class="container_menus"
+            :default-active="router.currentRoute.value.path" text-color="black" router>
+            <el-menu-item :index="item.path" v-for="item in menus" class="container_menus_item">
+                <el-icon>
+                    <component :is="item.icon"></component>
+                </el-icon>
+                <span>{{ item.title }}</span>
+                <span style="position:absolute;left:90%;">
                     <el-icon>
-                        <component :is="item.icon"></component>
+                        <ArrowRightBold />
                     </el-icon>
-                    <span>{{ item.title }}</span>
-                    <span style="position:absolute;left:90%;">
-                        <el-icon>
-                            <ArrowRightBold />
-                        </el-icon>
-                    </span>
-                </el-menu-item>
-            </el-menu>
-        </div>
+                </span>
+            </el-menu-item>
+        </el-menu>
     </div>
 </template>
 
@@ -66,7 +64,7 @@ const toLoginOrRegister = () => {
     &_header {
         height: 140px;
         line-height: 140px;
-        background-color: yellowgreen;
+        background-color: #68A1D9;
         text-align: center;
 
 
@@ -79,6 +77,7 @@ const toLoginOrRegister = () => {
             position: absolute;
             top: 70px;
             left: 40.5vw;
+            color: white;
         }
     }
 

@@ -1,7 +1,7 @@
 <!-- 导航栏 -->
 <script lang='ts' setup>
 import router from '@/router';
-import { reactive, toRefs, ref, computed } from 'vue'
+import { reactive, toRefs, ref, computed, watch } from 'vue'
 
 const navigate = computed(() => {
     return [
@@ -42,7 +42,7 @@ const toNavigate = (path: string) => {
 <style lang='scss' scoped>
 .container {
     height: 50px;
-    background-color: greenyellow;
+    background-color: white;
     text-align: center;
 
     &_icon {

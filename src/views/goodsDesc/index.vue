@@ -19,10 +19,13 @@ const data = reactive({
             { img: '' }
         ],
         goods_title: '',
+        goods_desc: '',
         present_price: '',
-        views: '',
         origin_price: '',
-        kind: ''
+        views: '',
+        kind: '',
+        pub_time: '',
+        is_collect: '',
     }
 })
 
@@ -54,6 +57,9 @@ watch(() => route.params, newVal => {
                 <span>原价￥{{ data.item.origin_price }}</span>
             </div>
             <div class="container_goodsDesc_title">
+                <span>{{ data.item.goods_title }}</span>
+            </div>
+            <div class="container_goodsDesc_desc">
                 <span>{{ data.item.goods_title }}</span>
             </div>
         </div>
@@ -88,11 +94,24 @@ watch(() => route.params, newVal => {
     }
 
     &_goodsDesc_title {
-        height: 60px;
+        height: 30px;
         width: 100%;
         background-color: white;
         font-size: 20px;
         text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &_goodsDesc_desc {
+        height: 70px;
+        width: 100%;
+        font-size: 20px;
+        background-color: white;
+        // text-overflow: ellipsis;
+        // overflow: hidden;
+        word-break: break-all;
+        word-wrap: break-word;
+        border-top: 1px solid rgb(202, 196, 196);
     }
 
     &_footNavigate {

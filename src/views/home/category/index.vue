@@ -37,7 +37,7 @@ const toCategory = (path: string) => {
                     <!-- <el-icon>
                         <component :is="item.icon"></component>
                     </el-icon> -->
-                    <img :src="item.imgUrl" alt="管理员头像">
+                    <img :src="item.imgUrl" alt="分类图">
                     <div class="container_icon_text">{{ item.title }}</div>
                 </div>
             </el-col>
@@ -48,7 +48,8 @@ const toCategory = (path: string) => {
 <style lang='scss' scoped>
 .container {
     height: 60px;
-    background-color: aquamarine;
+    background-color: #68A1D9;
+    color: white;
     text-align: center;
 
     &_icon {

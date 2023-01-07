@@ -1,0 +1,82 @@
+<!-- 商品列表-收藏-发布-买-卖 -->
+<script lang='ts' setup>
+import { reactive, toRefs, ref } from 'vue'
+import { useRouter } from 'vue-router';
+
+import { IgoodsDesc } from '@/utils/store'
+const router = useRouter()
+
+type Props = {
+    goodsList?: IgoodsDesc[]
+}
+defineProps<Props>()
+
+const toGoodsDesc = (goodsId: string) => {
+    router.push({
+        name: 'goodsDesc',
+        params: { id: goodsId }
+    })
+}
+</script>
+
+<template>
+    <div class="container">
+        <div class="container_item" v-for="item in goodsList" :key="item.goods_id" @click="toGoodsDesc(item.goods_id)">
+            <div class="container_item_img">
+                <img :src="item.imgUrl" alt="商品封面图">
+            </div>
+            <div class="container_item_detail">
+                <div>{{ item.goods_title }}</div>
+                <div>{{ item.goods_desc }}</div>
+                <div>￥{{ item.present_price }}</div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<style lang='scss' scoped>
+.container {
+    padding: 0 10px;
+
+    &_item {
+        display: flex;
+        background-color: white;
+        margin-top: 5px;
+        border-radius: 12px;
+        height: 120px;
+
+
+        &_img {
+            img {
+                width: 120px;
+                border-radius: 12px;
+            }
+        }
+
+        &_detail {
+            margin-left: 10px;
+            width: 100%;
+            overflow: hidden;
+
+            div:nth-child(1) {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-size: 20px;
+                font-weight: 400;
+            }
+
+            div:nth-child(2) {
+                word-wrap: break-word;
+                word-break: break-all;
+                font-size: 15px;
+                height: 70px;
+            }
+
+            div:nth-child(3) {
+                color: red;
+            }
+        }
+    }
+}
+</style>

@@ -6,9 +6,11 @@ export interface IgoodsDesc {
         img: string;
     }[];
     goods_title: string;
+    goods_desc: string;
     present_price: string;
     origin_price: string;
     views: string;
     kind: string;
     pub_time: string;
+    is_collect: string;
 }

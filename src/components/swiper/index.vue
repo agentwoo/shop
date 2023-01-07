@@ -20,9 +20,7 @@ const swiper = [
     <div class="container">
         <el-carousel trigger="click" height="150px">
             <el-carousel-item v-for="item in swiper" :key="item">
-                <h3 class="small justify-center" text="2xl">
-                    <img :src="item.img" alt="轮播图">
-                </h3>
+                <img :src="item.img" alt="轮播图">
             </el-carousel-item>
         </el-carousel>
     </div>
@@ -30,6 +28,12 @@ const swiper = [
 
 <style lang='scss' scoped>
 .container {
+    padding: 2px 5px;
+
+    :deep(.el-carousel__item) {
+        border-radius: 20px;
+    }
+
     img {
         width: 100%;
     }

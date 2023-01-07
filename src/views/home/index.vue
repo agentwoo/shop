@@ -4,9 +4,9 @@ import { reactive, toRefs, ref } from 'vue'
 import router from '@/router';
 import { Search } from '@element-plus/icons-vue'
 
-import swiper from '@/components/swiper/index.vue'
-import category from '@/views/home/category/index.vue'
-import shopItem from '@/components/shopItem/index.vue'
+import Swiper from '@/components/swiper/index.vue'
+import Category from '@/views/home/category/index.vue'
+import ShopItem from '@/components/shopItem/index.vue'
 import { useGoodsItemStore } from '@/store/index'
 import { successMessage, errMessage } from '@/utils/index'
 
@@ -42,26 +42,32 @@ const search = () => {
                 </template>
             </el-input>
         </div>
-        <swiper></swiper>
-        <category></category>
+        <Swiper></Swiper>
         <div class="container_recommend">推荐商品</div>
-        <shopItem :goodsItemDesc="goodsItemStore.goodsItem"></shopItem>
+        <Category></Category>
+        <ShopItem :goodsItemDesc="goodsItemStore.goodsItem"></ShopItem>
     </div>
 </template>
 
 <style lang='scss' scoped>
 .container {
     &_input {
-        padding: 5px 0;
+        padding: 5px;
+
+        :deep(.el-input__wrapper) {
+            border-radius: 18px;
+        }
     }
 
     &_recommend {
         height: 50px;
         line-height: 50px;
-        background-color: red;
+        background-color: #68A1D9;
+        color: white;
         text-align: center;
         font-size: 20px;
         font-weight: 400;
+        border-bottom: 1px solid white;
     }
 }
 </style>
