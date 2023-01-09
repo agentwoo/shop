@@ -27,6 +27,8 @@ const goodsItemStore = useGoodsItemStore()
 
 <style lang='scss' scoped>
 .container {
+    height: 100%;
+    overflow: hidden;
 
     &_header {
         position: fixed;

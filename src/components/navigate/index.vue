@@ -22,13 +22,14 @@ const toNavigate = (path: string) => {
         path: path
     })
 }
+
 </script>
 
 <template>
     <div class="container">
         <el-row>
             <el-col :span="8" v-for="item in navigate" @click="toNavigate(item.path)">
-                <div class="container_icon">
+                <div class="container_icon" tabindex="1" hidefocus="true">
                     <el-icon>
                         <component :is="item.icon"></component>
                     </el-icon>
@@ -47,10 +48,16 @@ const toNavigate = (path: string) => {
 
     &_icon {
         margin-top: 8px;
+        outline: 0; //去除边框--tableindex
 
         &_text {
             font-size: small;
         }
     }
+
+    div:focus {
+        color: #348CCC
+    }
+
 }
 </style>

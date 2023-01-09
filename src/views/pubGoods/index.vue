@@ -2,7 +2,9 @@
 <script lang='ts' setup>
 import { reactive, toRefs, ref } from 'vue'
 import type { FormInstance, FormRules, UploadProps, UploadUserFile } from 'element-plus'
+import { useMenusStore } from '@/store/index'
 
+const menusStore = useMenusStore()
 
 interface IpicList {
     name: string;
@@ -17,6 +19,7 @@ const ruleForm = reactive({
     originPrice: '',
     contactInfo: '',
     picList: [] as IpicList[],
+    picTitle: '',
 })
 const rules = reactive<FormRules>({
     name: [
@@ -58,18 +61,6 @@ const resetForm = (formEl: FormInstance | undefined) => {
 }
 
 
-
-// ruleForm.picList = ref<UploadUserFile[]>([
-//     {
-//         name: 'food.jpeg',
-//         url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-//     },
-//     {
-//         name: 'food.jpeg',
-//         url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100',
-//     },
-// ])
-
 const dialogImageUrl = ref('')
 const dialogVisible = ref(false)
 
@@ -104,18 +95,27 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
             </el-form-item>
             <el-form-item label="分类" prop="region">
                 <el-select v-model="ruleForm.region" placeholder="其它">
-                    <el-option label="其它" value="其它" />
-                    <el-option label="学习用品" value="学习用品" />
-                    <el-option label="生活用品" value="生活用品" />
-                    <el-option label="衣服鞋帽" value="衣服鞋帽" />
-                    <el-option label="运动健身" value="运动健身" />
-                    <el-option label="电子产品" value="电子产品" />
-                    <el-option label="零食饮料" value="零食饮料" />
+                    <el-option :label="item.title" :value="item.kind" v-for="item in menusStore.menus"
+                        :key="item.kind" />
                 </el-select>
             </el-form-item>
 
-            <el-form-item label="上传图片" prop="picList">
-                <el-upload v-model:file-list="ruleForm.picList"
+            <el-form-item label="封面图" prop="picTitle">
+                <el-upload v-model:file-list="ruleForm.picTitle" :multiple="false" :limit="1"
+                    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" list-type="picture-card"
+                    :on-preview="handlePictureCardPreview" :on-remove="handleRemove" class="container_pic">
+                    <el-icon>
+                        <Plus />
+                    </el-icon>
+                </el-upload>
+
+                <el-dialog v-model="dialogVisible">
+                    <img w-full :src="dialogImageUrl" alt="Preview Image" />
+                </el-dialog>
+            </el-form-item>
+
+            <el-form-item label="详情图" prop="picList">
+                <el-upload v-model:file-list="ruleForm.picList" :multiple="true" :limit="4"
                     action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" list-type="picture-card"
                     :on-preview="handlePictureCardPreview" :on-remove="handleRemove" class="container_pic">
                     <el-icon>

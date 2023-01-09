@@ -61,6 +61,7 @@ const toLoginOrRegister = () => {
 
 <style lang='scss' scoped>
 .container {
+
     &_header {
         height: 140px;
         line-height: 140px;
@@ -85,7 +86,7 @@ const toLoginOrRegister = () => {
         margin-top: 10px;
 
         &_item {
-            border-bottom: 1px solid gray;
+            border-bottom: 1px solid #F2F2F2;
         }
     }
 }

@@ -56,6 +56,16 @@ watch(() => router.currentRoute.value.path, newVal => {
         case '/login':
             data.title = '登录/注册'
             break;
+        // 用户详情
+        case '/userCenter/userInfo/updateHeaderImg':
+            data.title = '设置个人头像'
+            break;
+        case '/userCenter/userInfo/updateNickname':
+            data.title = '修改昵称'
+            break;
+        case '/userCenter/userInfo/updatePwd':
+            data.title = '修改密码'
+            break;
         default:
             data.title = '商品详情'
     }

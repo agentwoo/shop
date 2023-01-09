@@ -10,16 +10,23 @@ const router = useRouter()
 const menus = computed(() => {
     return [
         {
-            path: '', icon: 'User', title: '头像',
+            path: '/updateHeaderImg', icon: 'Picture', title: '头像',
         },
         {
-            path: '', icon: 'ShoppingBag', title: '昵称',
+            path: '/updateNickname', icon: 'User', title: '昵称',
         },
         {
-            path: '', icon: 'Sell', title: '账号',
+            path: '/updatePwd', icon: 'Lock', title: '密码',
         },
     ]
 })
+
+// 更新用户信息
+const update = (path: string) => {
+    router.push({
+        path: `userInfo${path}`,
+    })
+}
 
 const logout = () => {
     // 调用退出登录的api接口
@@ -29,6 +36,7 @@ const logout = () => {
     })
     successMessage('退出登录成功！')
 }
+
 </script>
 
 <template>
@@ -37,9 +45,9 @@ const logout = () => {
             <HeaderTitle></HeaderTitle>
         </div>
         <div class="container_userInfo">
-            <el-menu active-text-color="blue" background-color="white" class="container_menus"
-                :default-active="router.currentRoute.value.path" text-color="black" router>
-                <el-menu-item :index="item.path" v-for="item in menus" class="container_menus_item">
+            <el-menu active-text-color="#348CCC" background-color="white"
+                :default-active="router.currentRoute.value.path" text-color="black">
+                <el-menu-item :index="item.path" v-for="item in menus" class="menus_item" @click="update(item.path)">
                     <el-icon>
                         <component :is="item.icon"></component>
                     </el-icon>
@@ -60,6 +68,9 @@ const logout = () => {
 
 <style lang='scss' scoped>
 .container {
+    height: 100%;
+    overflow: hidden;
+
     &_header {
         position: fixed;
         top: 0;
@@ -70,6 +81,10 @@ const logout = () => {
 
     &_userInfo {
         margin-top: 50px;
+
+        .menus_item {
+            border-bottom: 1px solid #F2F2F2;
+        }
     }
 
     &_logout {

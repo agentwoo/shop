@@ -45,7 +45,9 @@ const search = () => {
         <Swiper></Swiper>
         <div class="container_recommend">推荐商品</div>
         <Category></Category>
-        <ShopItem :goodsItemDesc="goodsItemStore.goodsItem"></ShopItem>
+        <div class="container_layout">
+            <ShopItem :goodsItemDesc="goodsItemStore.goodsItem"></ShopItem>
+        </div>
     </div>
 </template>
 
@@ -68,6 +70,14 @@ const search = () => {
         font-size: 20px;
         font-weight: 400;
         border-bottom: 1px solid white;
+    }
+
+    &_layout {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 1vh;
+        padding: 0 2.5vw;
     }
 }
 </style>

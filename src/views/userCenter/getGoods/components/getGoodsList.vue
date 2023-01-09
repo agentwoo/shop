@@ -1,17 +1,14 @@
-<!-- 商品发布列表 -->
+<!-- 订单列表 -->
 <script lang='ts' setup>
 import { reactive, toRefs, ref } from 'vue'
 import { IgoodsDesc } from '@/utils/store'
 
 
 type Props = {
-    pubGoodsList?: IgoodsDesc[]
+    getGoodsList?: IgoodsDesc[]
 }
 defineProps<Props>()
 
-const edit = () => {
-    console.log('编辑');
-}
 
 const deleted = () => {
     console.log('删除');
@@ -21,7 +18,7 @@ const deleted = () => {
 
 <template>
     <div class="container">
-        <div class="container_item" v-for="item in pubGoodsList" :key="item.goods_id">
+        <div class="container_item" v-for="item in getGoodsList" :key="item.goods_id">
             <div class="container_item_img">
                 <img :src="item.imgUrl" alt="商品封面图">
             </div>
@@ -31,7 +28,6 @@ const deleted = () => {
                     <div>￥{{ item.present_price }}</div>
                 </div>
                 <div class="container_item_detail_edit">
-                    <el-button type="primary" round @click="edit">修改</el-button>
                     <el-button type="danger" round @click="deleted">删除</el-button>
                 </div>
             </div>
@@ -84,7 +80,7 @@ const deleted = () => {
 
             &_edit {
                 position: relative;
-                left: 120px;
+                left: 70%;
                 top: 20px;
             }
         }

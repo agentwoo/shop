@@ -16,7 +16,7 @@ const goodsItemStore = useGoodsItemStore()
             <HeaderTitle></HeaderTitle>
         </div>
         <div class="container_tip" v-if="goodsItemStore.goodsItem.length === 0">
-            <el-empty :image-size="250" description="暂无发布商品" />
+            <el-empty :image-size="250" description="暂无收藏商品" />
         </div>
         <div class="container_show" v-else>
             <PubGoodsList :pubGoodsList="goodsItemStore.goodsItem"></PubGoodsList>

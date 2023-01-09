@@ -50,6 +50,14 @@ const routes: Array<RouteRecordRaw> = [
         path: "/home/allShop",
         name: "allShop",
         component: () => import("@/views/home/category/allShop/index.vue"),
+        redirect: '/home/allShop/kind/1',
+        children: [
+            {
+                path: "kind/:kind",
+                name: "goodsKind",
+                component: () => import("@/views/home/category/allShop/components/goodsKind.vue")
+            },
+        ]
     },
     {
         path: "/home/newShop",
@@ -92,6 +100,23 @@ const routes: Array<RouteRecordRaw> = [
         name: "userInfo",
         component: () => import("@/views/userCenter/userInfo/index.vue"),
     },
+    // 编辑个人信息
+    {
+        path: "/userCenter/userInfo/updateHeaderImg",
+        name: "updateHeaderImg",
+        component: () => import("@/views/userCenter/userInfo/headerImg/index.vue"),
+    },
+    {
+        path: "/userCenter/userInfo/updateNickname",
+        name: "updateNickname",
+        component: () => import("@/views/userCenter/userInfo/nickname/index.vue"),
+    },
+    {
+        path: "/userCenter/userInfo/updatePwd",
+        name: "updatePwd",
+        component: () => import("@/views/userCenter/userInfo/pwd/index.vue"),
+    },
+
 ]
 
 const router = createRouter({

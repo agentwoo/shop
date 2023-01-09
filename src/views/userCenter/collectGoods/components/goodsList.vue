@@ -1,8 +1,9 @@
-<!-- 商品列表-收藏-发布-买-卖 -->
+<!-- 商品列表-->
 <script lang='ts' setup>
 import { reactive, toRefs, ref } from 'vue'
 import { useRouter } from 'vue-router';
 
+import { Star } from '@element-plus/icons-vue'
 import { IgoodsDesc } from '@/utils/store'
 const router = useRouter()
 
@@ -17,6 +18,12 @@ const toGoodsDesc = (goodsId: string) => {
         params: { id: goodsId }
     })
 }
+
+const cancelCollect = (goods_id: string) => {
+    // 取消收藏
+    console.log('取消收藏');
+}
+
 </script>
 
 <template>
@@ -30,6 +37,7 @@ const toGoodsDesc = (goodsId: string) => {
                 <div>{{ item.goods_desc }}</div>
                 <div>￥{{ item.present_price }}</div>
             </div>
+            <el-button type="warning" :icon="Star" circle class="btn" @click.stop="cancelCollect(item.goods_id)" />
         </div>
     </div>
 </template>
@@ -76,6 +84,12 @@ const toGoodsDesc = (goodsId: string) => {
             div:nth-child(3) {
                 color: red;
             }
+        }
+
+        .btn {
+            position: relative;
+            left: -10px;
+            top: 80px;
         }
     }
 }

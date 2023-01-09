@@ -23,6 +23,7 @@ import navigate from '@/components/navigate/index.vue'
 <style lang='scss' scoped>
 .homePage_container {
     height: 100%;
+    overflow: hidden;
 
     &_header {
         position: fixed;
