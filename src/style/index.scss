@@ -8,3 +8,12 @@ html {
     height: 100%;
     background-color: #F2F2F2;
 }
+
+
+.el-message-box.center-dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+}

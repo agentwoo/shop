@@ -3,15 +3,17 @@
 import { reactive, toRefs, ref } from 'vue'
 import { useRouter } from 'vue-router';
 
-import { Star } from '@element-plus/icons-vue'
+import { StarFilled } from '@element-plus/icons-vue'
 import { IgoodsDesc } from '@/utils/store'
-const router = useRouter()
+import { useGoodsItemStore } from '@/store';
+import { errMessage, successMessage } from '@/utils';
 
 type Props = {
     goodsList?: IgoodsDesc[]
 }
 defineProps<Props>()
 
+const router = useRouter()
 const toGoodsDesc = (goodsId: string) => {
     router.push({
         name: 'goodsDesc',
@@ -19,9 +21,13 @@ const toGoodsDesc = (goodsId: string) => {
     })
 }
 
-const cancelCollect = (goods_id: string) => {
-    // 取消收藏
-    console.log('取消收藏');
+const goodsItemStore = useGoodsItemStore()
+const cancelCollect = (item: IgoodsDesc) => {
+    let index = goodsItemStore.collectGoodsList.findIndex(v => v.goods_id === item.goods_id)
+    if (index === -1) return errMessage('出现错误')
+    goodsItemStore.collectGoodsList.splice(index, 1)
+    goodsItemStore.goodsItem.splice(index, 1, { ...item, is_collect: '0' })
+    successMessage('取消收藏')
 }
 
 </script>
@@ -37,7 +43,7 @@ const cancelCollect = (goods_id: string) => {
                 <div>{{ item.goods_desc }}</div>
                 <div>￥{{ item.present_price }}</div>
             </div>
-            <el-button type="warning" :icon="Star" circle class="btn" @click.stop="cancelCollect(item.goods_id)" />
+            <el-button type="warning" :icon="StarFilled" circle class="btn" @click.stop="cancelCollect(item)" />
         </div>
     </div>
 </template>

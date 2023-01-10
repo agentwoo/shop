@@ -6,6 +6,7 @@ export function dialog(msg: string, title: string): Promise<boolean> {
         const opts = {
             confirmButtonText: '确认',
             cancelButtonText: '取消',
+            customClass: 'center-dialog'
         }
         ElMessageBox.confirm(msg, title, opts)
             .then(() => { resolve(true) })

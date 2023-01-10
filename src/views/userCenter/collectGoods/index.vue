@@ -16,11 +16,11 @@ const goodsItemStore = useGoodsItemStore()
         <div class="container_header">
             <HeaderTitle></HeaderTitle>
         </div>
-        <div class="container_tip" v-if="goodsItemStore.collectGoodsList$.length === 0">
+        <div class="container_tip" v-if="goodsItemStore.collectGoodsList.length === 0">
             <el-empty :image-size="250" description="暂无收藏商品" />
         </div>
         <div class="container_show" v-else>
-            <GoodsList :goodsList="goodsItemStore.collectGoodsList$"></GoodsList>
+            <GoodsList :goodsList="goodsItemStore.collectGoodsList"></GoodsList>
         </div>
     </div>
 </template>

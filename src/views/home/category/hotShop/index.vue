@@ -14,11 +14,11 @@ const goodsItemStore = useGoodsItemStore()
         <div class="container_header">
             <HeaderTitle></HeaderTitle>
         </div>
-        <div class="container_tip" v-if="goodsItemStore.freeGoods$.length === 0">
+        <div class="container_tip" v-if="goodsItemStore.hotGoodsList$.length === 0">
             <el-empty :image-size="250" description="暂无热门商品" />
         </div>
         <div class="container_show" v-else>
-            <ShopItem :goodsItemDesc="goodsItemStore.freeGoods$"></ShopItem>
+            <ShopItem :goodsItemDesc="goodsItemStore.hotGoodsList$"></ShopItem>
         </div>
     </div>
 </template>

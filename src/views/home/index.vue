@@ -34,7 +34,7 @@ const search = () => {
 <template>
     <div class="container">
         <div class="container_input">
-            <el-input v-model="goodsItemStore.searchVal" placeholder="搜索" @keyup.enter="search">
+            <el-input v-model="goodsItemStore.searchVal" placeholder="请输入搜索关键字" @keyup.enter="search">
                 <template #suffix>
                     <el-icon class="el-input__icon" @click="search">
                         <Search />

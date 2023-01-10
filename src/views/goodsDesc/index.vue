@@ -64,7 +64,7 @@ watch(() => route.params, newVal => {
             </div>
         </div>
         <div class="container_footNavigate">
-            <BuyNavigate :buy-or-collect-item-id="data.item.goods_id"></BuyNavigate>
+            <BuyNavigate :buy-or-collect-item="data.item"></BuyNavigate>
         </div>
     </div>
 </template>

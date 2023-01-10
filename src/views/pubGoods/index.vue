@@ -100,7 +100,7 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
                 </el-select>
             </el-form-item>
 
-            <el-form-item label="封面图" prop="picTitle">
+            <!-- <el-form-item label="封面图" prop="picTitle">
                 <el-upload v-model:file-list="ruleForm.picTitle" :multiple="false" :limit="1"
                     action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15" list-type="picture-card"
                     :on-preview="handlePictureCardPreview" :on-remove="handleRemove" class="container_pic">
@@ -112,7 +112,7 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
                 <el-dialog v-model="dialogVisible">
                     <img w-full :src="dialogImageUrl" alt="Preview Image" />
                 </el-dialog>
-            </el-form-item>
+            </el-form-item> -->
 
             <el-form-item label="详情图" prop="picList">
                 <el-upload v-model:file-list="ruleForm.picList" :multiple="true" :limit="4"

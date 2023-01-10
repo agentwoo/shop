@@ -1,21 +1,29 @@
 <!-- 商品页 -->
 <script lang='ts' setup>
-import { reactive, toRefs, ref, computed } from 'vue'
-import router from '@/router';
+import { reactive, toRefs, ref, watch } from 'vue'
 
+import router from '@/router';
 import { IgoodsDesc } from '@/utils/store'
+import { useGoodsItemStore } from '@/store/index'
 
 type Props = {
     goodsItemDesc?: IgoodsDesc[]
 }
 defineProps<Props>()
 
-
+const goodsItemStore = useGoodsItemStore()
+// 跳转商品详情页
 const toGoodsDesc = (goodsId: string) => {
     router.push({
         name: 'goodsDesc',
         params: { id: goodsId }
     })
+    // 点击时views数量加一，还需调用后台接口
+    let index = goodsItemStore.goodsItem.findIndex(v => v.goods_id === goodsId)
+    let item = goodsItemStore.goodsItem.find(v => v.goods_id === goodsId)
+    if (!item) return
+    let views = Number(item.views) + 1
+    goodsItemStore.goodsItem.splice(index, 1, { ...item, views: String(views) })
 }
 
 </script>
@@ -36,7 +44,7 @@ const toGoodsDesc = (goodsId: string) => {
                                 <View />
                             </el-icon>
                         </span> -->
-                    <span>{{ item.views }}看过</span>
+                    <span>{{ item.views }}热度</span>
                 </div>
             </div>
         </div>
